@@ -4,19 +4,25 @@ import {Link, navigate} from '@reach/router';
 
 
 
-const People = props => {
-    const[person, setPerson] = useState([]);
+const People = ({id}) => {
+    const[person, setPerson] = useState({});
 
-    const fetchPerson = () => {
-        axios.get("https://swapi.dev/api/people/")
+    useEffect (() => {
+        axios.get(`https://swapi.dev/api/people/${id}`)
             .then (response => {setPerson(response.data.results)})
-        }
+        }, []);
+
+
         return(
             <div>
-                <button onClick= {fetchPerson}> click for person</button>
-                {person.map((person, i) => {
-                return(<div ket={i}>{person.name}</div>)
-            })}
+                {
+                    person?
+                    <h1>Name: {person.name}</h1>:
+                    ""
+                }
+                {/* <h2>Homeworld: {person.height}</h2>
+                <h2>Hair Color: {person.hair_color}</h2>
+                <h2>Eye Color: {person.eye_color}</h2> */}
             </div>
         )
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { navigate } from '@reach/router';
 
 const Form = props => {
     const dropDown = ["people", "planets"];
@@ -8,12 +9,12 @@ const Form = props => {
 
     const formHandler = (e) => {
         e.preventDefault();
-        console.log("formHandler -> e", e)
-        axios.get(`https://swapi.dev/api/${searchFor}/${idValue}/`).then(response=>{
-            console.log(response.data);
-        })
+        if(searchFor === dropDown[0]) {
+            navigate(`/people/${idValue}`)
+        } else {
+            navigate(`/planet/${idValue}`)
+        }
     }
-
     const selectHandler = val => {
         setSeatchFor(val)
         console.log("val", val)
