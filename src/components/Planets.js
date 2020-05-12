@@ -4,19 +4,24 @@ import {Link, navigate} from '@reach/router';
 
 
 
-const Planet = props => {
-    const[ planet, setPlanet] = useState([]);
+const Planet = ({id}) => {
+    const[ planet, setPlanet] = useState({});
 
-    const fetchPlanet = () => {
-        axios.get("https://swapi.dev/api/planets/")
-        .then (response => {setPlanet(response.data.results)});
-    }
-    return (
-        <div>
-            {planet.map((planet, i) => {
-                return(<div ket={i}>{planet.name}</div>)
-            })}
-        </div>
+    useEffect (() => {
+        axios.get(`https://swapi.dev/api/planets/${id}`)
+            .then (response => {
+                console.log(response)
+                setPlanet(response.data)})
+        }, []);
+
+
+        return(
+            <div>
+                <h1>{planet.name}</h1>
+                <h2>Climate: {planet.climate}</h2>
+                <h2>terrain: {planet.terrain}</h2>
+                <h2>Population: {planet.population}</h2>
+            </div>
     )
 }
 export default Planet;

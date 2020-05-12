@@ -7,10 +7,11 @@ import Form from './components/Form';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App container">
       <Router>
         <Form path="/"/>
         <People path ="/people/:id"/>
+        <Planet path ="/planet/:id"/>
       </Router>
     </div>
   );

@@ -28,7 +28,7 @@ const Form = props => {
     return (
         <>
             <div className="row mt-5">
-                <div className="col-sm-6">
+                <div className="col-sm">
                     <form onSubmit={ formHandler } className="form-inline">
                         <div className="form-group">
                             <label htmlFor="dropDown">Search For: </label>
