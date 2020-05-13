@@ -8,8 +8,8 @@ import Form from './components/Form';
 function App() {
   return (
     <div className="App container">
-      <Router>
         <Form path="/"/>
+      <Router>
         <People path ="/people/:id"/>
         <Planet path ="/planet/:id"/>
       </Router>
